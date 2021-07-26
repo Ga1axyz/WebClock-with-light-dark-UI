@@ -1,0 +1,209 @@
+/* 谷歌字体 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+/* CSS变量 https://www.ruanyifeng.com/blog/2017/05/css-variables.html */
+/* 全局的变量通常放在根元素:root里面，确保任何选择器都可以读取 */
+:root{
+
+    --first-color: #03a0c1; /* 按钮颜色 */
+    --title-color: #4f4f64; /* 字体颜色 */
+    --text-color: #4f4f64;  /* 指针及年月日颜色 */
+    --text-color-light: #9b9bb0;    /* 表盘刻度颜色 */
+    --white-color: #FFF;    /* 白色作为高光底色 */
+    --gray-color: #d1d1e6;  /* 灰色阴影 */
+    --body-color: #ececf3;  /* 背景颜色 */
+
+    /* 字体和相对大小 */
+    --body-font: 'Poppins', sans-serif;
+
+    --biggest-font-size: 3rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    --tiny-font-size: .625rem;
+
+    /* 字体粗细  */
+    --font-medium: 500;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: var(--body-font);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+body.dark-theme {
+    --title-color: #cccccc;
+    --text-color: #b8b8c7;
+    --body-color: #25252d;
+    --first-color: #51ca4c;
+}
+
+.dark-theme .clock__circle {
+    box-shadow: 6px 6px 16px #1c1c21, 
+                -6px -6px 16px #2f2f37, 
+                inset -6px -6px 16px #2f2f37, 
+                inset 6px 6px 12px #1c1c21;
+}
+.dark-theme .clock__theme {
+    box-shadow: inset -1px -1px 1px #2f2f37, 
+                inset 1px 1px 1px #1c1c21;
+}
+
+.grid {
+    display: grid;
+}
+.container {
+    height: 100vh;
+    max-width: 968px;
+    margin: 0 auto;
+    /* grid-template-rows属性定义每一行的行高 */
+    grid-template-rows: 0.9fr max-content max-content;
+}
+
+.clock__content {
+    /* align-self 属性设置单元格内容的垂直位置（上中下） */
+    align-self: center;
+    /* row-gap 属性设置行与行的间隔（行间距） 在这里是设置 表盘部分 与 年月日/时间 之间的间距 */
+    row-gap: 3.5rem;
+}
+.clock__circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: -6px -6px 16px var(--white-color),  /* 左上角外侧白色高光 */
+                6px 6px 16px var(--gray-color),   /* 右下角外侧灰色阴影 */
+                inset 6px 6px 16px var(--gray-color), /* 左上角内侧灰色阴影 */ 
+                inset -6px -6px 16px var(--white-color);    /* 右下角内侧白色高光 */
+
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+}
+.clock__twelve, .clock__three, .clock__six, .clock__nine {
+    position: absolute;
+    width: 1rem;
+    height: 1px;
+    background-color: var(--text-color-light);
+}
+.clock__twelve, .clock__six {
+    transform: rotate(90deg);
+}
+.clock__twelve {
+    top: 1.25rem;
+}
+.clock__six {
+    bottom: 1.25rem;
+}
+.clock__three {
+    right: 0.75rem; /* 0.75+0.5=1.25 */
+}
+.clock__nine {
+    left: 0.75rem;
+}
+
+.clock__rounder {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--body-color);
+    background-color: var(--first-color);
+    z-index: 6;
+}
+
+.clock__hour, .clock__minutes, .clock__seconds {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+.clock__hour {
+    width: 105px;
+    height: 105px;
+}
+.clock__hour::before {
+    content: '';
+    background-color: var(--text-color);
+    width: 0.25rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    z-index: 1;
+}
+.clock__minutes {
+    width: 136px;
+    height: 136px;
+}
+.clock__minutes::before {
+    content: '';
+    background-color: var(--text-color);
+    width: 0.25rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+    z-index: 1;
+}
+.clock__seconds {
+    width: 130px;
+    height: 130px;
+}
+.clock__seconds::before {
+    content: '';
+    background-color: var(--first-color);
+    width: 0.125rem;
+
+    height: 5.20rem;
+
+    border-radius: 1rem;
+    z-index: 1;
+}
+
+.clock__theme {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    display: flex;
+    padding: .25rem;
+    border-radius: 50%;
+    box-shadow: inset -1px -1px 1px #ffffff, 
+                inset 1px 1px 1px #d1d1e6;
+    color: var(--first-color);
+    cursor: pointer;    /* 该属性定义了鼠标指针放在一个元素边界范围内时所用的光标形状 */
+}
+
+.ohTime {
+    width: max-content;
+    justify-self: center;
+    margin-bottom: var(--mb-2-5);
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+    color: var(--text-color-light);
+}
+
+.clock__text {
+    display: flex;
+    justify-content: center;
+}
+.clock__text-hour, .clock__text-minutes {
+    position: relative;
+    right: -1%;
+    font-size: var(--biggest-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+}
+.clock__text-ampm {
+    position: relative;
+    right: -1.5%;
+    font-size: var(--tiny-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    margin-left: var(--mb-0-25);
+}
+
+.clock__date {
+    text-align: center;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+}

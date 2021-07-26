@@ -1,0 +1,61 @@
+<!--
+ * @Descripttion: 本项目基于 https://github.com/bedimcode/responsive-clock-ui ，优化了部分代码
+ * @version: 1.0
+ * @Author: Ga1axy_z
+ * @Date: 2021-07-16 19:13:39
+ * @LastEditors: Ga1axy_z
+ * @LastEditTime: 2021-07-26 20:22:22
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./WebSitePic.ico" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+    <title>Clock By Ga1axy_z</title>
+</head>
+<body>
+    <div class="container grid">
+        <div class="clock__content grid">
+            <!-- 表盘部分 -->
+            <div class="clock__circle">
+                <span class="clock__twelve"></span>
+                <span class="clock__three"></span>
+                <span class="clock__six"></span>
+                <span class="clock__nine"></span>
+
+                <div class="clock__rounder"></div>
+                <div class="clock__hour" id="clock-hour"></div>
+                <div class="clock__minutes" id="clock-minutes"></div>
+                <div class="clock__seconds" id="clock-seconds"></div>
+
+                <div class="clock__theme">
+                    <i class="bx bxs-moon" id="theme-button"></i>
+                </div>
+            </div>
+            <!-- 年月日和时间 -->
+            <div>
+                <div class="clock__text">
+                    <div class="clock__text-hour" id="text-hour"></div>
+                    <div class="clock__text-hour">:</div>
+                    <div class="clock__text-minutes" id="text-minutes"></div>
+                    <div class="clock__text-ampm" id="text-ampm"></div>
+                </div>
+
+                <div class="clock__date">
+                    <span id="date-day"></span>
+                    <span id="date-month"></span>
+                    <span id="date-year"></span>
+                </div>
+            </div>
+        </div>
+
+        <p class="ohTime">Yesterday</p>
+        <p class="ohTime">You Said Tomorrow</p>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
